@@ -1,0 +1,13 @@
+.btn-inverse {
+    background-color: #f2f7fb;
+    border-color: #ddd;
+    color: #343434;
+    cursor: pointer;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+}
+.btn-inverse:hover {
+    background-color: #384552;
+    border-color: #4c626d;
+    color: white;
+}
