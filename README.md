@@ -16,6 +16,7 @@ https://github.com/JasonBaier/ci3-fire-starter
 create a database 'ci_voyager_junior' and update the application/config/database.php using your database credentials
 
 Main admin login :
+url : your main url with '/login'
 username :admin
 password :admin
 
