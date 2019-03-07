@@ -1,7 +1,7 @@
 # CI3 ready player one 
 Ready admin panel with ready landing page.
 
-**[VIEW THE DEMO](http://ci3-fire-starter.jasonbaier.com)**
+**[VIEW THE DEMO](https://lukman-nakib.000webhostapp.com/ci-ready-player-one/admin)**
 
 
 inspired by 
