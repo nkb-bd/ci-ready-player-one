@@ -1,13 +1,10 @@
-.btn-inverse {
-    background-color: #f2f7fb;
-    border-color: #ddd;
-    color: #343434;
-    cursor: pointer;
-    -webkit-transition: all ease-in .3s;
-    transition: all ease-in .3s;
+
+.calendar-table{
+	font-size: 12px!important;
 }
-.btn-inverse:hover {
-    background-color: #384552;
-    border-color: #4c626d;
-    color: white;
+.left{
+	    float: right;
+}
+.right{
+	    float: right;
 }

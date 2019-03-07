@@ -34,7 +34,6 @@
       <link rel="stylesheet" href="<?=base_url()?>admin_asset/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
       <link rel="stylesheet" type="text/css" href="<?=base_url()?>admin_asset/assets/icon/feather/css/feather.css">
       <!-- <link rel="stylesheet" type="text/css" href="<?=base_url()?>admin_asset/assets/css/font-awesome-n.min.css"> -->
-      <!-- <link rel="stylesheet" type="text/css" href="<?=base_url()?>admin_asset/assets/css/style.css"> -->
       <!-- <link rel="stylesheet" type="text/css" href="<?=base_url()?>admin_asset/assets/css/widget.css"> -->
       <?php // CSS files ?>
         <?php if (isset($css_files) && is_array($css_files)) : ?>
@@ -45,8 +44,19 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         <?php endif; ?>
+      <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/themes/admin/css/custom.css">
       
       <script type="text/javascript" src="<?=base_url()?>admin_asset/bower_components/jquery/js/jquery.min.js"></script>
+
+             <?php // Javascript files ?>
+    <?php if (isset($js_files) && is_array($js_files)) : ?>
+        <?php foreach ($js_files as $js) : ?>
+            <?php if ( ! is_null($js)) : ?>
+                <?php $separator = (strstr($js, '?')) ? '&' : '?'; ?>
+                <?php echo "\n"; ?><script type="text/javascript" src="<?php echo $js; ?><?php echo $separator; ?>v=<?php echo $this->settings->site_version; ?>"></script><?php echo "\n"; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
       
    </head>
    <body>
@@ -314,15 +324,7 @@
       <script type="text/javascript" src="<?=base_url()?>admin_asset/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
       <script src="<?=base_url()?>admin_asset/assets/js/pcoded.min.js"></script>
       <script src="<?=base_url()?>admin_asset/assets/js/vertical/vertical-layout.min.js"></script>
-        <?php // Javascript files ?>
-    <?php if (isset($js_files) && is_array($js_files)) : ?>
-        <?php foreach ($js_files as $js) : ?>
-            <?php if ( ! is_null($js)) : ?>
-                <?php $separator = (strstr($js, '?')) ? '&' : '?'; ?>
-                <?php echo "\n"; ?><script type="text/javascript" src="<?php echo $js; ?><?php echo $separator; ?>v=<?php echo $this->settings->site_version; ?>"></script><?php echo "\n"; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
-    <?php endif; ?>
+ 
       <script type="text/javascript" src="<?=base_url()?>admin_asset/assets/js/script.min.js"></script>
       <script>
          window.dataLayer = window.dataLayer || [];

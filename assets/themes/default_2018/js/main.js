@@ -7,6 +7,109 @@
 
 	"use strict";
 
+	// ajax form
+	if($('.ajax-form').length>0){
+		//ajax form start
+		console.log('xxx');
+              $(".ajax-form").submit(function(e) {
+                    e.preventDefault();
+                    var $this =$(this);
+                    
+
+                  $('.alert-cstm').hide();
+                    var post_url = $(this).attr("action"); //get form action url
+                    var request_method = $(this).attr("method"); //get form GET/POST method
+                    var form_data = $(this).serialize(); //Encode form elements for submission
+
+
+
+                    $.ajax({
+                        url : post_url,
+                        type: request_method,
+                        dataType: 'json',
+                        data: form_data,
+                           beforeSend: function() {
+			                  	$this.find('.btn').addClass('loading-start');
+			                  	$this.find('.btn').attr("disabled",true);
+
+		              }
+                    })
+                    .done(function(data) {
+
+                    // $this.find(":submit").attr('disabled', 'false');
+
+                          console.log(data);
+                          // console.log(data.result);
+                          console.log('test');
+                        $('.loading-icn').hide();
+                        // success
+                        if (data.result==1){
+
+                             $('.ajax-form')[0].reset();
+
+                                 $('#success').html("<div class='alert alert-dismissible fade show alert-success'>");
+                                $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                               $('#success > .alert-success').append(data.msg);
+                                $('#success > .alert-success').append('</div>');
+                                //clear all fields
+                                $(this).trigger("reset");
+
+                        // invalid
+                        }else{
+
+                            console.log('false');
+
+                            // $(this).find("#reg").attr('disabled', 'false');
+                            $('.alert-cstm').addClass('alert-danger');
+                             $('#success').html("<div class='alert alert-dismissible fade show alert-danger'>");
+                                $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                                $('#success > .alert-danger').append(data.msg);
+                                $('#success > .alert-danger').append('</div>');
+                                //clear all fields
+                                $(this).trigger("reset");
+
+                        }
+
+                    })
+                    .fail(function(data) {
+
+                          $this.find('.btn').removeAttr('disabled');
+                        console.log(data);
+                       
+
+                                $('#success').html("<div class='alert alert-dismissible fade show alert-danger'>");
+                                $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                                $('#success > .alert-danger').append("<strong>Sorry  It seems that my mail server is not responding. Please Reload and try again later!");
+                                $('#success > .alert-danger').append('</div>');
+                                //clear all fields
+                                $('#contactForm').trigger("reset");
+                    })
+                    .always(function() {
+                          $this.find('.btn').removeClass('loading-start');
+			               $this.find('.btn').removeAttr("disabled");
+                    });
+
+                });
+    
+	}
+
+
+	// ajax form end
+
+
+	// button loader 
+	  $("button.load-button").on("click",function(){
+	    var btndom = $(this);
+	        btndom.addClass("loading-start");
+	        btndom.attr("disabled",true);
+	        
+	        setTimeout(function(){
+	          btndom.removeClass("loading-start").removeAttr("disabled");
+	        },5000);
+	  });
+
+
+
 	var isMobile = {
 		Android: function() {
 			return navigator.userAgent.match(/Android/i);

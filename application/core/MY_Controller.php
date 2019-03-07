@@ -587,7 +587,9 @@ class Admin_Controller extends MY_Controller {
          $this->add_css_theme(array("font-awesome-n.min.css",
                                     "style.css",
                                     "widget.css",
-                                    "custom.css"));
+                                    ));
+
+            $this->add_js_theme(array("my-js.js"));
         // declare main template
         $this->template = "../../{$this->settings->themes_folder}/{$this->settings->theme}/template.php";
     }

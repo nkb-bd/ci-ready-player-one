@@ -192,7 +192,7 @@ function init() {
     var addresses = ['Mohajon Potti Road, Near Bobdor Bazar Court Point, Sylhet 3100'];
 
     for (var x = 0; x < addresses.length; x++) {
-        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'+CA&key=AIzaSyAhMqGnt6JqRyudxYl-tGU5wA9RwyPWINM', null, function (data) {
         	console.log(data);
             var p = data.results[0].geometry.location
             var latlng = new google.maps.LatLng(p.lat, p.lng);

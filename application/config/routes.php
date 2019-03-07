@@ -64,4 +64,5 @@ $route['sitemap\.xml']         = 'sitemap';
 // public dynacmic page
 
 $route['pages/(:any)']                = 'welcome/pages/$1';
+$route['blog/(:any)']                = 'welcome/blogs/$1';
 

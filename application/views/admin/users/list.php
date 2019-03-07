@@ -97,10 +97,15 @@
                         <td>
                             <div class="text-right">
                                 <div class="btn-group">
-                                    <?php if ($user['id'] > 1) : ?>
+                                   
+                                    <?php if (($user['id'] > 1) &&( $this->session->logged_in['id'])==1) :?>
                                         <a href="#modal-<?php echo $user['id']; ?>" data-toggle="modal" class="btn btn-danger btn-xs" title="<?php echo lang('admin button delete'); ?>"><span class="fa fa-trash"></span></a>
                                     <?php endif; ?>
-                                    <a href="<?php echo $this_url; ?>/edit/<?php echo $user['id']; ?>" class="btn btn-warning btn-xs" title="<?php echo lang('admin button edit'); ?>"><span class="fa fa-edit"></span></a>
+
+                                    <?php if (( $this->session->logged_in['id']==$user['id'])|| ($this->session->logged_in['id']==1)) :?>
+                                         <a href="<?php echo $this_url; ?>/edit/<?php echo $user['id']; ?>" class="btn btn-warning btn-xs" title="<?php echo lang('admin button edit'); ?>"><span class="fa fa-edit"> </span></a>
+
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </td>

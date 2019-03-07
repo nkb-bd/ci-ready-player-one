@@ -97,11 +97,10 @@ class Contact_model extends CI_Model {
             // build query
             $sql = "
                 INSERT INTO {$this->_db} (
-                    name, email, title, message, created
+                    name, email, message, created
                 ) VALUES (
                     " . $this->db->escape($data['name']) . ",
                     " . $this->db->escape($data['email']) . ",
-                    " . $this->db->escape($data['title']) . ",
                     " . $this->db->escape($data['message']) . ",
                     '" . date('Y-m-d H:i:s') . "'
                 )

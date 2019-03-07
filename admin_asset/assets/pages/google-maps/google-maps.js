@@ -48,22 +48,22 @@
           lat: 21.2334329,
           lng: 72.866472
       });
-      $('#geocoding_form').submit(function(e) {
-          e.preventDefault();
-          GMaps.geocode({
-              address: $('#address').val().trim(),
-              callback: function(results, status) {
-                  if (status == 'OK') {
-                      var latlng = results[0].geometry.location;
-                      mapGeo.setCenter(latlng.lat(), latlng.lng());
-                      mapGeo.addMarker({
-                          lat: latlng.lat(),
-                          lng: latlng.lng()
-                      });
-                  }
-              }
-          });
-      });
+      // $('#geocoding_form').submit(function(e) {
+      //     e.preventDefault();
+      //     GMaps.geocode({
+      //         address: $('#address').val().trim(),
+      //         callback: function(results, status) {
+      //             if (status == 'OK') {
+      //                 var latlng = results[0].geometry.location;
+      //                 mapGeo.setCenter(latlng.lat(), latlng.lng());
+      //                 mapGeo.addMarker({
+      //                     lat: latlng.lat(),
+      //                     lng: latlng.lng()
+      //                 });
+      //             }
+      //         }
+      //     });
+      // });
 
       /*Street view*/
       var panorama;
