@@ -38,6 +38,21 @@ class Pages extends Admin_Controller {
         {
             $this->_redirect_url = THIS_URL;
         }
+
+        // summernote
+           // setup page header data
+        $this
+            ->add_css_theme("summernote.css,summernote-bs2.css,summernote-bs3.css")
+            ->add_js_theme("summernote.min.js,selectize.min.js" )
+            ->add_js_theme("{$this->settings->theme}_i18n.js", TRUE)
+            ->add_js_theme("my_admin.js");
+
+        $this ->add_external_css(
+                array(
+                    "",
+                    "http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css",
+
+                ));
     }
 
 

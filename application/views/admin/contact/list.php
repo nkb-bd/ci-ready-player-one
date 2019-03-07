@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+
 <div class="panel panel-default card card-body">
     <div class="panel-heading">
         <div class="row">
@@ -166,3 +166,4 @@
         </div>
     <?php endforeach; ?>
 <?php endif; ?>
+

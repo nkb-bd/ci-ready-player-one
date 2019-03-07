@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2019 at 04:53 PM
+-- Generation Time: Mar 06, 2019 at 04:53 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -21,6 +21,37 @@ SET time_zone = "+00:00";
 --
 -- Database: `ci_voyager_junior`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogs`
+--
+
+CREATE TABLE `blogs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `excerpt` text COLLATE utf8mb4_unicode_ci,
+  `body` text COLLATE utf8mb4_unicode_ci,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci,
+  `meta_keywords` text COLLATE utf8mb4_unicode_ci,
+  `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created` timestamp NULL DEFAULT NULL,
+  `updated` timestamp NULL DEFAULT NULL,
+  `deleted` tinyint(2) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created`, `updated`, `deleted`) VALUES
+(1, 0, 'Hello World', 'Hang the', 'Yar Meta Description', 'pages/page1.jpg', 'hello-world', 'Yar Meta Description', 'Keyword1, Keyword2', '1', '2018-10-04 03:55:24', '2019-01-23 10:01:42', 1),
+(4, 0, 'My Page', 'Excepteura', '                                                                                                            <div style=\"text-align: center;\"><span style=\"font-size: 0.9375rem;\">#php echo \'php echo test\' php#</span></div><div class=\"container-fluid text-center bg-grey\">\r\n  <h2>Portfolio223</h2><br>\r\n  <h4>What we have created</h4>\r\n  <div class=\"row text-center\">\r\n    <div class=\"col-sm-4\">\r\n      <div class=\"thumbnail\">\r\n        \r\n        <p><img src=\"https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525_960_720.jpg\" style=\"width: 100%;\"><strong><br></strong></p><p><strong>Paris</strong></p>\r\n        <p>Yes, we built Paris</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-sm-4\">\r\n      <div class=\"thumbnail\">\r\n        \r\n        <p><img style=\"width: 100%;\" src=\"https://image.shutterstock.com/image-photo/unesco-world-cultural-heritage-speicherstadt-450w-1242947317.jpg\"><strong><br></strong></p><p><strong>New York</strong></p>\r\n        <p>We built New York</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-sm-4\">\r\n      <div class=\"thumbnail\">\r\n        \r\n        <p><img style=\"width:100%;\" src=\"https://cdn.pixabay.com/photo/2013/05/28/20/30/city-114290_960_720.jpg\"><strong><br></strong></p><p><strong>San Francisco</strong></p>\r\n        <p>Yes, San Fran is ours</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>                                                                                                                                                                                                                                                                                                                                  ', 'uploads/blog/Mar_2019/1551885667.jpg', 'my-page', 'Eos12', 'Cupidatat', '1', '2019-01-21 22:50:39', '2019-01-21 22:50:39', 0),
+(5, 0, 'nTestasd', 'nTest', '                                                                                                                                                <p>                                nTestnTestnTestnTest</p>                                                                                                                ', 'uploads/blog/Mar_2019/1551884275.jpg', 'nTest', 'nTest', 'nTest', '1', '2019-02-07 03:57:57', '2019-02-07 03:57:57', 0);
 
 -- --------------------------------------------------------
 
@@ -161,8 +192,11 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`, `tbl_id`) VALUES
-('ir8q2bvsaidq6a9mfrnu14ns7n3hlt9m', '::1', 1549638924, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534393633383839363b6c616e6775616765737c613a313a7b733a373a22656e676c697368223b733a373a22456e676c697368223b7d6c616e67756167657c733a373a22656e676c697368223b6c6f676765645f696e7c613a31303a7b733a323a226964223b733a313a2231223b733a383a22757365726e616d65223b733a353a2261646d696e223b733a31303a2266697273745f6e616d65223b733a343a2253697465223b733a393a226c6173745f6e616d65223b733a31333a2241646d696e6973747261746f72223b733a353a22656d61696c223b733a31353a2261646d696e4061646d696e2e636f6d223b733a383a226c616e6775616765223b733a373a22656e676c697368223b733a383a2269735f61646d696e223b733a313a2231223b733a363a22737461747573223b733a313a2231223b733a373a2263726561746564223b733a31393a22323031332d30312d30312030303a30303a3030223b733a373a2275706461746564223b733a31393a22323031382d30392d32322032323a32383a3134223b7d72656665727265727c733a37393a22687474703a2f2f6c6f63616c686f73742f766f79616765725f6a756e696f722f61646d696e2f67616c6c6572793f736f72743d6964266469723d617363266c696d69743d3230266f66667365743d30223b, 29),
-('9525n4ockcj0se0ksf2btv2cf4d1jdf5', '::1', 1550159576, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535303135393537363b6c616e6775616765737c613a313a7b733a373a22656e676c697368223b733a373a22456e676c697368223b7d6c616e67756167657c733a373a22656e676c697368223b6c6f676765645f696e7c613a31303a7b733a323a226964223b733a313a2231223b733a383a22757365726e616d65223b733a353a2261646d696e223b733a31303a2266697273745f6e616d65223b733a343a2253697465223b733a393a226c6173745f6e616d65223b733a31333a2241646d696e6973747261746f72223b733a353a22656d61696c223b733a31353a2261646d696e4061646d696e2e636f6d223b733a383a226c616e6775616765223b733a373a22656e676c697368223b733a383a2269735f61646d696e223b733a313a2231223b733a363a22737461747573223b733a313a2231223b733a373a2263726561746564223b733a31393a22323031332d30312d30312030303a30303a3030223b733a373a2275706461746564223b733a31393a22323031382d30392d32322032323a32383a3134223b7d72656665727265727c733a37383a22687474703a2f2f6c6f63616c686f73742f766f79616765725f6a756e696f722f61646d696e2f696d616765733f736f72743d6964266469723d617363266c696d69743d3230266f66667365743d30223b, 41);
+('o5lk9ncdcbhsj4qmem87c5l2ff7h4q5p', '::1', 1551714913, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535313731343931333b6c616e6775616765737c613a313a7b733a373a22656e676c697368223b733a373a22456e676c697368223b7d6c616e67756167657c733a373a22656e676c697368223b6c6f676765645f696e7c613a31303a7b733a323a226964223b733a313a2231223b733a383a22757365726e616d65223b733a353a2261646d696e223b733a31303a2266697273745f6e616d65223b733a343a2253697465223b733a393a226c6173745f6e616d65223b733a31333a2241646d696e6973747261746f72223b733a353a22656d61696c223b733a31353a2261646d696e4061646d696e2e636f6d223b733a383a226c616e6775616765223b733a373a22656e676c697368223b733a383a2269735f61646d696e223b733a313a2231223b733a363a22737461747573223b733a313a2231223b733a373a2263726561746564223b733a31393a22323031332d30312d30312030303a30303a3030223b733a373a2275706461746564223b733a31393a22323031382d30392d32322032323a32383a3134223b7d72656665727265727c733a38353a22687474703a2f2f6c6f63616c686f73742f766f79616765725f6a756e696f722f61646d696e2f706f7274666f6c696f3f736f72743d737461747573266469723d617363266c696d69743d3230266f66667365743d30223b, 190),
+('736l7mjhhmgbone8kl41uj7mvhset3b4', '::1', 1551788588, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535313738383532373b6c616e6775616765737c613a313a7b733a373a22656e676c697368223b733a373a22456e676c697368223b7d6c616e67756167657c733a373a22656e676c697368223b6c6f676765645f696e7c613a31303a7b733a323a226964223b733a313a2231223b733a383a22757365726e616d65223b733a353a2261646d696e223b733a31303a2266697273745f6e616d65223b733a343a2253697465223b733a393a226c6173745f6e616d65223b733a31333a2241646d696e6973747261746f72223b733a353a22656d61696c223b733a31353a2261646d696e4061646d696e2e636f6d223b733a383a226c616e6775616765223b733a373a22656e676c697368223b733a383a2269735f61646d696e223b733a313a2231223b733a363a22737461747573223b733a313a2231223b733a373a2263726561746564223b733a31393a22323031332d30312d30312030303a30303a3030223b733a373a2275706461746564223b733a31393a22323031382d30392d32322032323a32383a3134223b7d, 192),
+('ndenhhqfenr8k7jtilm092es04jngah5', '::1', 1551798446, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535313739383234313b6c616e6775616765737c613a313a7b733a373a22656e676c697368223b733a373a22456e676c697368223b7d6c616e67756167657c733a373a22656e676c697368223b6c6f676765645f696e7c613a31303a7b733a323a226964223b733a313a2231223b733a383a22757365726e616d65223b733a353a2261646d696e223b733a31303a2266697273745f6e616d65223b733a343a2253697465223b733a393a226c6173745f6e616d65223b733a31333a2241646d696e6973747261746f72223b733a353a22656d61696c223b733a31353a2261646d696e4061646d696e2e636f6d223b733a383a226c616e6775616765223b733a373a22656e676c697368223b733a383a2269735f61646d696e223b733a313a2231223b733a363a22737461747573223b733a313a2231223b733a373a2263726561746564223b733a31393a22323031332d30312d30312030303a30303a3030223b733a373a2275706461746564223b733a31393a22323031382d30392d32322032323a32383a3134223b7d72656665727265727c733a38303a22687474703a2f2f6c6f63616c686f73742f766f79616765725f6a756e696f722f61646d696e2f50616765733f736f72743d7469746c65266469723d617363266c696d69743d3230266f66667365743d30223b, 194),
+('ajqte0qfqk28a4b08g5kuor0mvka2429', '::1', 1551864260, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535313836343236303b6c616e6775616765737c613a313a7b733a373a22656e676c697368223b733a373a22456e676c697368223b7d6c616e67756167657c733a373a22656e676c697368223b, 195),
+('rb6d2chbat20heam0pmlrdcjflv405sr', '::1', 1551887077, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535313838373031333b6c616e6775616765737c613a313a7b733a373a22656e676c697368223b733a373a22456e676c697368223b7d6c616e67756167657c733a373a22656e676c697368223b6c6f676765645f696e7c613a31303a7b733a323a226964223b733a313a2231223b733a383a22757365726e616d65223b733a353a2261646d696e223b733a31303a2266697273745f6e616d65223b733a343a2253697465223b733a393a226c6173745f6e616d65223b733a31333a2241646d696e6973747261746f72223b733a353a22656d61696c223b733a31353a2261646d696e4061646d696e2e636f6d223b733a383a226c616e6775616765223b733a373a22656e676c697368223b733a383a2269735f61646d696e223b733a313a2231223b733a363a22737461747573223b733a313a2231223b733a373a2263726561746564223b733a31393a22323031332d30312d30312030303a30303a3030223b733a373a2275706461746564223b733a31393a22323031382d30392d32322032323a32383a3134223b7d72656665727265727c733a37393a22687474703a2f2f6c6f63616c686f73742f766f79616765725f6a756e696f722f61646d696e2f626c6f673f736f72743d7469746c65266469723d617363266c696d69743d3230266f66667365743d30223b, 242);
 
 -- --------------------------------------------------------
 
@@ -174,7 +208,6 @@ CREATE TABLE `emails` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(64) NOT NULL,
   `email` varchar(256) NOT NULL,
-  `title` varchar(128) NOT NULL,
   `message` text NOT NULL,
   `created` datetime NOT NULL,
   `read` datetime DEFAULT NULL,
@@ -185,12 +218,24 @@ CREATE TABLE `emails` (
 -- Dumping data for table `emails`
 --
 
-INSERT INTO `emails` (`id`, `name`, `email`, `title`, `message`, `created`, `read`, `read_by`) VALUES
-(4, 'Quon Barber', 'xotegagy@mailinator.com', 'Enim quos reprehenderit inventore et id', 'Dolorum autem eos est quidem dolor', '2018-09-20 15:31:57', NULL, NULL),
-(5, 'Noah West', 'pema@mailinator.com', 'Reiciendis veritatis tenetur voluptas reprehenderit suscipit', 'Id dolores laboriosam necessitatibus in est et et enim doloribus tempor cumque sunt qui exercitation', '2018-09-20 15:33:20', NULL, NULL),
-(6, 'Claudia Francis', 'zipolehe@mailinator.net', 'Beatae ad quis nostrud tempora voluptatem', 'Optio vitae cupiditate do aperiam aliqua Nesciunt', '2018-09-20 15:38:58', NULL, NULL),
-(7, 'Wynne Garrett', 'cakesoxi@mailinator.com', 'Atque in velit in beatae aliquip est error totam esse minim ut sit quia reprehenderit consequatur', 'Veniam nemo velit velit saepe nobis quo esse aut velit quibusdam eum quam ut et', '2018-09-20 15:40:07', NULL, NULL),
-(8, 'Jael Walter', 'bulu@mailinator.com', 'Illo est modi sed qua', 'Dolore exercitationem quia atque sed obcaecati enim', '2018-09-22 23:35:29', NULL, NULL);
+INSERT INTO `emails` (`id`, `name`, `email`, `message`, `created`, `read`, `read_by`) VALUES
+(4, 'Quon Barber', 'xotegagy@mailinator.com', 'Dolorum autem eos est quidem dolor', '2018-09-20 15:31:57', NULL, NULL),
+(5, 'Noah West', 'pema@mailinator.com', 'Id dolores laboriosam necessitatibus in est et et enim doloribus tempor cumque sunt qui exercitation', '2018-09-20 15:33:20', NULL, NULL),
+(6, 'Claudia Francis', 'zipolehe@mailinator.net', 'Optio vitae cupiditate do aperiam aliqua Nesciunt', '2018-09-20 15:38:58', NULL, NULL),
+(7, 'Wynne Garrett', 'cakesoxi@mailinator.com', 'Veniam nemo velit velit saepe nobis quo esse aut velit quibusdam eum quam ut et', '2018-09-20 15:40:07', NULL, NULL),
+(8, 'Jael Walter', 'bulu@mailinator.com', 'Dolore exercitationem quia atque sed obcaecati enim', '2018-09-22 23:35:29', NULL, NULL),
+(9, 'name', 'nakib.un@gmail.com', 'asdasdsaasdasd', '2019-03-06 19:58:50', NULL, NULL),
+(10, 'name', 'lukman.nakib@gmail.com', 'asdsadsadsad', '2019-03-06 20:06:17', NULL, NULL),
+(11, 'asd', 'nakib.un@gmail.com', 'asdasdasdasdsad', '2019-03-06 20:06:57', NULL, NULL),
+(12, 'asd', 'asd@s.com', 'asdsadsadasd', '2019-03-06 20:07:20', NULL, NULL),
+(13, 'asdasd', 'asd@s.com', 'asdsadasdasd', '2019-03-06 20:12:04', NULL, NULL),
+(14, 'asdsad', 'rahat392@gmail.com', 'asdasdsadsad', '2019-03-06 20:17:18', NULL, NULL),
+(15, 'asdasd', 'asd@s.com', 'asdsadasdasd', '2019-03-06 20:26:40', NULL, NULL),
+(16, 'name', 'lukman.nakib@gmail.com', 'asdasdasdasdsad', '2019-03-06 20:28:12', NULL, NULL),
+(17, 'asdasd', 'asd@s.com', 'asdasdasdasd', '2019-03-06 20:28:47', NULL, NULL),
+(18, 'DJ Sunny', 'rahat392@gmail.com', 'asdasdsadsdsd', '2019-03-06 20:29:40', NULL, NULL),
+(19, 'assasd asd', 'nakib.un@gmail.com', 'asdsadsadasd', '2019-03-06 20:30:07', NULL, NULL),
+(20, 'asd', 'asd@s.com', 'asdsadasdsad', '2019-03-06 20:30:27', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -214,9 +259,8 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `name`, `slug`, `description`, `created`, `updated`, `status`, `deleted`) VALUES
-(1, 'Mara Shepard678', 'Irure-test', 'Perferendis providen', '2019-01-22 21:35:44', '2019-01-23 10:03:17', 1, 1),
 (2, 'Oliver Santiago', 'Totam-y12sss', 'Illo provident q', '2019-01-22 22:00:45', '2019-01-23 16:01:41', 1, 0),
-(3, 'Carlos Morgan', 'Sit sint ipsum ali', 'Commodo ut explicabo', '2019-01-22 22:04:27', '2019-01-22 22:04:27', 1, 0);
+(3, 'Carlos Morgan', 'Totam-y12sss', 'Commodo ut explicabo', '2019-01-22 22:04:27', '2019-02-27 15:54:08', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -240,7 +284,11 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `name`, `path`, `notes`, `created`, `updated`, `status`, `deleted`) VALUES
-(1, '1549619954_08.jpg', 'C:/xampp/htdocs/voyager_junior/uploads/Feb_2019/', 'Test', '2019-02-07 21:59:15', '2019-02-07 21:59:15', 1, 0);
+(1, '1549619954_08.jpg', 'C:/xampp/htdocs/voyager_junior/uploads/Feb_2019/', 'Test', '2019-02-07 21:59:15', '2019-02-27 15:54:30', 1, 1),
+(2, '1551281814_27.png', 'uploads/Feb_2019/1551281814_27.png', '', '2019-02-27 03:36:54', '2019-02-27 15:58:38', 1, 1),
+(3, '1551281992_27.jpg', 'uploads/Feb_2019/1551281992_27.jpg', 'new', '2019-02-27 03:39:52', '2019-02-27 15:54:24', 1, 1),
+(4, '1551281992_27.jpg', 'uploads/Feb_2019/1551281992_27.jpg', 'new', '2019-02-27 03:39:53', '2019-02-27 03:39:53', 1, 0),
+(5, '1551281993_27.jpg', 'uploads/Feb_2019/1551281993_27.jpg', 'new', '2019-02-27 03:39:53', '2019-02-27 03:39:53', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -258,7 +306,7 @@ CREATE TABLE `login_attempts` (
 --
 
 INSERT INTO `login_attempts` (`ip`, `attempt`) VALUES
-('::1', '2019-02-14 18:38:00');
+('::1', '2019-03-06 15:24:55');
 
 -- --------------------------------------------------------
 
@@ -354,6 +402,35 @@ INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `sl
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `portfolio`
+--
+
+CREATE TABLE `portfolio` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` tinyint(2) NOT NULL DEFAULT '1',
+  `deleted` tinyint(2) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `portfolio`
+--
+
+INSERT INTO `portfolio` (`id`, `name`, `url`, `path`, `img`, `type`, `created`, `updated`, `status`, `deleted`) VALUES
+(2, 'Md Akhlasuddin.com', 'https://www.mdakhlasuddin.com/', 'uploads/portfolio/Mar_2019/1551868760_06.JPG', '1551868760_06.JPG', 'Design', '2019-01-22 22:00:45', '2019-01-23 16:01:41', 1, 0),
+(3, 'Carlos Morgan', 'Totam-y12sss', 'Commodo ut explicabo', '', '', '2019-01-22 22:04:27', '2019-02-27 15:54:08', 1, 1),
+(4, 'Ornatei.co.uk : Education & Career Consultant', 'http://ornatei.co.uk/', 'uploads/portfolio/Mar_2019/1551868928_06.JPG', '1551868928_06.JPG', 'WEB DEVELOPMENT', '2019-03-04 03:16:24', '2019-03-04 03:16:24', 1, 0),
+(5, 'three', 'url', 'uploads/portfolio/Mar_2019/1551712891_04.jpg', '1551712891_04.jpg', '', '2019-03-04 03:21:31', '2019-03-06 10:42:22', 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `services`
 --
 
@@ -375,7 +452,7 @@ CREATE TABLE `services` (
 
 INSERT INTO `services` (`id`, `sub_heading`, `heading`, `background_img`, `path`, `created`, `updated`, `deleted`, `status`) VALUES
 (1, 'test', 'test', 'download.jpg', 'uploads/Feb_2019/download.jpg', '2019-02-07 22:10:54', '2019-02-08 04:10:54', 0, 1),
-(2, 'Seo', 'Search Engines', '1550156621_14.jpg', 'uploads/Feb_2019/1550156621_14.jpg', '2019-02-14 03:03:41', '2019-02-14 09:03:41', 0, 1);
+(2, 'Seo', 'Search Engines', '1550156621_14.jpg', 'uploads/Feb_2019/1550156621_14.jpg', '2019-02-14 03:03:41', '2019-02-25 21:42:44', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -408,21 +485,22 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `name`, `input_type`, `options`, `is_numeric`, `show_editor`, `input_size`, `translate`, `help_text`, `validation`, `sort_order`, `label`, `value`, `last_update`, `updated_by`, `type`, `deleted`) VALUES
-(1, 'site_name', 'input', NULL, '0', '0', 'large', '0', NULL, 'required|trim|min_length[3]|max_length[128]', 10, 'Site Name', 'Electra', '2019-02-14 21:44:18', 1, 'general', 0),
-(3, 'meta_keywords', 'input', NULL, '0', '0', 'large', '0', 'Comma-seperated list of site keywords', 'trim', 20, 'Meta Keywords', 'these, are, keywords', '2019-02-14 21:44:18', 1, 'general', 0),
-(4, 'meta_description', 'textarea', NULL, '0', '0', 'large', '0', 'Short description describing your site.', 'trim', 30, 'Meta Description', 'This is the site description.', '2019-02-14 21:44:18', 1, 'general', 0),
-(5, 'site_email', 'input', NULL, '0', '0', 'medium', '0', 'Email address all emails will be sent from.', 'required|trim|valid_email', 40, 'Site Email', 'email@yourdomain.com', '2019-02-14 21:44:18', 1, 'contact', 0),
-(7, 'welcome_message', 'textarea', NULL, '0', '1', 'large', '1', 'Message to display on home page.', 'trim', 70, 'Welcome message', '<h1 style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px 0px 4px; border: none; outline: 0px; vertical-align: baseline;\"><font face=\"Ek Mukta, sans-serif\"><b>Have a project in mind?</b></font></h1><p style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px 0px 4px; border: none; outline: 0px; vertical-align: baseline;\"><font face=\"Ek Mukta, sans-serif\">You can reach us by email!<br></font><font face=\"Ek Mukta, sans-serif\">Based in London. We push boundaries trough thinking not just about your brand, your website, or your digital marketing but how all of the digital elements of your business work togheter.</font></p><p style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px 0px 4px; border: none; outline: 0px; vertical-align: baseline;\"><font face=\"Ek Mukta, sans-serif\"><b><br></b></font><font face=\"Ek Mukta, sans-serif\"><b>Through our best-in-class techniques and bespoke growth plans we assess digital problems and put in place strategies that lead to commercial success.</b></font></p>', '2019-02-14 21:44:18', 1, 'general', 0),
-(8, 'contact', 'input', NULL, '0', '0', NULL, '0', 'Your Contact Info', '', 30, 'Contact Info', '', '2019-02-14 21:44:18', 1, 'contact', 0),
-(9, 'owner_name', 'input', NULL, '0', '0', NULL, '0', NULL, '', 1, 'Owner Name', 'Masud Rana', '2019-02-14 21:44:18', 1, 'general', 0),
-(10, 'owner_mobile', 'input', NULL, '0', '0', NULL, '0', 'Owner Contact Number', '', 2, 'Contact Number', '+880714587993', '2019-02-14 21:44:18', 1, 'contact', 0),
-(11, 'facebook', 'input', NULL, '0', '0', NULL, '0', 'Fb Link', '', 0, 'Facebook', 'https://www.facebook.com/', '2019-02-14 21:44:18', 1, 'social', 0),
-(12, 'twitter', 'input', NULL, '0', '0', NULL, '0', 'Twitter Link', '', 0, 'Twitter ', '#', '2019-02-14 21:44:18', 1, 'social', 0),
-(13, 'instagram', 'input', NULL, '0', '0', NULL, '0', 'Instagram Link', '', 0, 'Instagram', '#', '2019-02-14 21:44:18', 1, 'social', 0),
-(14, 'address', 'textarea', NULL, '0', '0', NULL, '0', NULL, '', 0, 'Address', 'Zindabazar, Sylhet', '2019-02-14 21:44:18', 1, 'contact', 0),
-(15, 'per_page_limit', 'input', NULL, '0', '0', NULL, '0', 'per_page_limit', '', 50, 'per_page_limit', '20', '2019-02-14 21:44:18', 1, 'general', 0),
-(19, 'template', 'dropdown', 'default|Default\r\ndefault_2018|2018', '0', '0', NULL, '0', 'Website Theme', '', 0, 'Theme', 'default_2018', '2019-02-14 21:44:18', 1, 'general', 0),
-(20, 'logo1', 'file', '', '0', '0', NULL, '0', NULL, '', 0, 'Logo', 'uploads/logo/Feb_2019/logo1.png', '2019-02-14 18:39:29', 1, 'general', 0);
+(1, 'site_name', 'input', NULL, '0', '0', 'large', '0', NULL, 'required|trim|min_length[3]|max_length[128]', 10, 'Site Name', 'Hisenberg', '2019-03-06 21:44:02', 1, 'general', 0),
+(3, 'meta_keywords', 'input', NULL, '0', '0', 'large', '0', 'Comma-seperated list of site keywords', 'trim', 10, 'Meta Keywords', 'these, are, keywords', '2019-03-06 21:44:02', 1, 'general', 0),
+(4, 'meta_description', 'textarea', NULL, '0', '0', 'large', '0', 'Short description describing your site.', 'trim', 10, 'Meta Description', 'This is the site description from settings', '2019-03-06 21:44:02', 1, 'general', 0),
+(5, 'site_email', 'input', NULL, '0', '0', 'medium', '0', 'Email address all emails will be sent from.', 'required|trim|valid_email', 50, 'Site Email', 'email@yourdomain.com', '2019-03-06 21:44:02', 1, 'contact', 0),
+(7, 'welcome_message', 'textarea', NULL, '0', '1', 'large', '1', 'Message to display on home page.', 'trim', 10, 'Welcome message', '<h1 style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px 0px 4px; border: none; outline: 0px; vertical-align: baseline;\"><font face=\"Ek Mukta, sans-serif\"><b>Have a project in mind?</b></font></h1><p style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px 0px 4px; border: none; outline: 0px; vertical-align: baseline;\"><font face=\"Ek Mukta, sans-serif\">You can reach us by email!<br></font><font face=\"Ek Mukta, sans-serif\">Based in London. We push boundaries trough thinking not just about your brand, your website, or your digital marketing but how all of the digital elements of your business work togheter.</font></p><p style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px 0px 4px; border: none; outline: 0px; vertical-align: baseline;\"><font face=\"Ek Mukta, sans-serif\"><b><br></b></font><font face=\"Ek Mukta, sans-serif\"><b>Through our best-in-class techniques and bespoke growth plans we assess digital problems and put in place strategies that lead to commercial success.</b></font></p>', '2019-03-06 21:44:02', 1, 'general', 0),
+(8, 'contact', 'input', NULL, '0', '0', NULL, '0', 'Your Contact Info', '', 50, 'Contact Info', '', '2019-03-06 21:44:02', 1, 'contact', 0),
+(9, 'owner_name', 'input', NULL, '0', '0', NULL, '0', NULL, '', 10, 'Owner Name', 'Masud Rana', '2019-03-06 21:44:02', 1, 'general', 0),
+(10, 'owner_mobile', 'input', NULL, '0', '0', NULL, '0', 'Owner Contact Number', '', 50, 'Contact Number', '+880714587993', '2019-03-06 21:44:02', 1, 'contact', 0),
+(11, 'facebook', 'input', NULL, '0', '0', NULL, '0', 'Fb Link', '', 100, 'Facebook', 'https://www.facebook.com/', '2019-03-06 21:44:02', 1, 'social', 0),
+(12, 'twitter', 'input', NULL, '0', '0', NULL, '0', 'Twitter Link', '', 100, 'Twitter ', '#', '2019-03-06 21:44:02', 1, 'social', 0),
+(13, 'instagram', 'input', NULL, '0', '0', NULL, '0', 'Instagram Link', '', 100, 'Instagram', '#', '2019-03-06 21:44:02', 1, 'social', 0),
+(14, 'address', 'textarea', NULL, '0', '0', NULL, '0', NULL, '', 50, 'Address', 'Zindabazar, Sylhet', '2019-03-06 21:44:02', 1, 'contact', 0),
+(15, 'per_page_limit', 'input', NULL, '0', '0', NULL, '0', 'per_page_limit', '', 10, 'per_page_limit', '20', '2019-03-06 21:44:02', 1, 'general', 0),
+(19, 'template', 'dropdown', 'default|Default\r\ndefault_2018|2018', '0', '0', NULL, '0', 'Website Theme', '', 10, 'Theme', 'default_2018', '2019-03-06 21:44:02', 1, 'general', 0),
+(20, 'logo1', 'file', '', '0', '0', NULL, '0', NULL, '', 5, 'Logo', 'uploads/logo/Feb_2019/logo1.png', '2019-02-14 18:39:29', 1, 'general', 0),
+(21, 'footer', 'input', '', '0', '0', NULL, '0', '', 'trim', 10, 'Website Footer', 'Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Created <!-- <i class=\"icon-heart color-danger\" aria-hidden=\"true\"></i> --> by <a href=\"http://thedigitalavengers.com/\" target=\"_blank\"> The Digital Avengers </a>', '2019-03-06 21:44:02', 1, 'general', 0);
 
 -- --------------------------------------------------------
 
@@ -448,7 +526,37 @@ CREATE TABLE `sliders` (
 
 INSERT INTO `sliders` (`id`, `sub_heading`, `heading`, `background_img`, `path`, `created`, `updated`, `deleted`, `status`) VALUES
 (1, 'test', 'test', 'thumb-1920-911816.png', 'uploads/sliders/Feb_2019/thumb-1920-911816.png', '2019-02-07 22:10:54', '2019-02-08 04:10:54', 0, 1),
-(2, 'test123', 'test123', 'beach-1236581_960_720.jpg', 'uploads/sliders/Feb_2019/beach-1236581_960_720.jpg', '2019-02-14 00:46:29', '2019-02-14 06:46:29', 0, 1);
+(2, '', '', 'beach-1236581_960_720.jpg', 'uploads/sliders/Mar_2019/beach-1236581_960_720.jpg', '2019-02-14 00:46:29', '2019-02-14 06:46:29', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team`
+--
+
+CREATE TABLE `team` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `fb_link` varchar(255) NOT NULL,
+  `twitter_link` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `designation` varchar(100) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` tinyint(2) NOT NULL DEFAULT '1',
+  `deleted` tinyint(2) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `team`
+--
+
+INSERT INTO `team` (`id`, `name`, `fb_link`, `twitter_link`, `path`, `img`, `designation`, `created`, `updated`, `status`, `deleted`) VALUES
+(2, 'Rahat Baksh', 'test', '', 'uploads/team/Mar_2019/1551873487_06.jpg', '1551873487_06.jpg', 'Developer', '2019-01-22 22:00:45', '2019-01-23 16:01:41', 1, 0),
+(3, 'Carlos Morgan', 'Totam-y12sss', '', 'Commodo ut explicabo', '', '', '2019-01-22 22:04:27', '2019-02-27 15:54:08', 1, 1),
+(4, 'DJ Sunny', 'https://www.doctorguidebd.org/', '#', 'uploads/team/Mar_2019/1551873428_06.jpg', '1551873428_06.jpg', 'Front End Developer', '2019-03-04 03:16:24', '2019-03-04 03:16:24', 1, 0),
+(5, 'three', 'url', '', 'uploads/portfolio/Mar_2019/1551712891_04.jpg', '1551712891_04.jpg', '', '2019-03-04 03:21:31', '2019-03-06 11:58:42', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -483,11 +591,20 @@ INSERT INTO `users` (`id`, `username`, `password`, `salt`, `first_name`, `last_n
 (2, 'johndoe', '4e8ece39c9905fe6989022a7747d2c67d90582cdf483d762905f026b3f2328dbc019acf59f77a57472228933c33429de859210a3c6b2976234501462994cf73c', 'a876126be616f492fa9ff8fb554eadffb8e43ed9faef8e1070c2508d76c57b1613899ceb97972f7959c4c05617ce36e25ba63787a8bd3f183680863c687a7c12', 'John', 'Doe', 'john@doe.com', 'english', '0', '0', '1', NULL, '2013-01-01 00:00:00', '2019-01-23 13:11:25', NULL),
 (3, 'rahynoxori', 'ab8ce45c74c2efc513baac7f02cc3836a87acaaf26a43b28e8a656f03443fda92db4e2dfaa488120bb9d0065a1a9e3577a1c6633cb220fee58bcbea3445ff256', 'cda829ac751e44c9d89a5a5a4da8b7f626f8284351fb82ae5c830927251998d81548bdcb3e987bc2d40ec324e156dbc188ac06d3a1b32a88cbecc4878b29736b', 'Medge', 'Buckner', 'fogopiqymu@mailinator.com', 'english', '0', '0', '1', NULL, '2019-01-15 15:11:20', '2019-01-15 15:11:29', NULL),
 (4, 'maxytor', '1bfe67addb9252e773d744961cc473a4bd2572821fc563ab6d3b2141c06f595896908893d5b4dc3befd02f6c6dfced142fd8b6858a452c36bbca142cadc104f3', '48860ba2d002c7566bec138f40ee3b6ce4b1b9645ecc7238cfa3832c4e5063dc4e921898073bc6d52a02c0c20fdeab33e18d9916c5d286ea45ad811eb765d04e', 'Adrienne', 'Carpenter', 'viki@mailinator.com', 'english', '0', '1', '0', NULL, '2019-01-21 15:54:26', '2019-01-21 15:54:26', NULL),
-(7, 'test123', '968b805bacd0b61b25b81d439024cd514c1836fb840833f0c760667bf91d154ddbe8b2ca354a39649447b491362973c3d05344e04eb5f02eaaf6b30f38f15818', '113237fa06126343e16d21363d84dd7e33fb976cc78aa40dd3ee8ee20425ab0cede9c61ca65eb7d23f326ff46f3edf7bed09b681f705e972274f1c388f08f871', 'Emery', 'Byers', 'test@test.com', 'english', '0', '1', '0', '06d56e38832ea9fb5d1956ab62e9ea08e5d2aebf', '2019-01-22 10:52:35', '2019-01-22 11:30:48', NULL);
+(7, 'test123', '968b805bacd0b61b25b81d439024cd514c1836fb840833f0c760667bf91d154ddbe8b2ca354a39649447b491362973c3d05344e04eb5f02eaaf6b30f38f15818', '113237fa06126343e16d21363d84dd7e33fb976cc78aa40dd3ee8ee20425ab0cede9c61ca65eb7d23f326ff46f3edf7bed09b681f705e972274f1c388f08f871', 'Emery', 'Byers', 'test@test.com', 'english', '0', '0', '1', '06d56e38832ea9fb5d1956ab62e9ea08e5d2aebf', '2019-01-22 10:52:35', '2019-02-21 20:38:22', NULL),
+(8, 'user1', '0ca38c4a1674484236c3942c95447d0a2ac3c4fd2769ea4d5ab4bd43bcfd9fa6e63791fe644dfbc2d007b8d2e5773c4bb60f7ea60f653c62995345fb8bf0a20c', '6338fb7133a860b549afb80af23662670171f48cbb8c71026332494a18ebd807b633974617f6c0163ba46f373642602edd34d7792e1ef851ee59b1c315062a1b', 'teeest', 'test', 'nakib.un@gmail.com', NULL, '1', '1', '0', NULL, '2019-02-21 20:38:09', '2019-02-27 20:46:09', NULL),
+(9, 'miran', '40bcf79aad3efe1808dcc66327e25034b827ced59a15d95726d4a501f2620864eb34f87f1adf1ba3cd414fe8a969b05e098c0bdc4eff38dfaea6c38b19826716', '767e144765f392f698e57b1a59c93c5ed83722d9c4ed91b30745780fd302892d0962f8720a3e3db767463a4a30f4d7f25160dc0e54ff91c0c15f69a268dab3dd', 'miran', 'test', 'miran@mail.com', 'english', '0', '0', '0', '3cac74ea6632bdcff46e23460b7e3640e9e593cc', '2019-02-26 20:32:35', '2019-02-26 20:32:35', NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `blogs`
+--
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pages_slug_unique` (`slug`);
 
 --
 -- Indexes for table `captcha`
@@ -508,7 +625,6 @@ ALTER TABLE `ci_sessions`
 ALTER TABLE `emails`
   ADD PRIMARY KEY (`id`),
   ADD KEY `name` (`name`),
-  ADD KEY `title` (`title`),
   ADD KEY `created` (`created`),
   ADD KEY `read` (`read`),
   ADD KEY `read_by` (`read_by`),
@@ -552,6 +668,12 @@ ALTER TABLE `pages`
   ADD UNIQUE KEY `pages_slug_unique` (`slug`);
 
 --
+-- Indexes for table `portfolio`
+--
+ALTER TABLE `portfolio`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -572,6 +694,12 @@ ALTER TABLE `sliders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -583,6 +711,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `blogs`
+--
+ALTER TABLE `blogs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `captcha`
 --
 ALTER TABLE `captcha`
@@ -592,13 +726,13 @@ ALTER TABLE `captcha`
 -- AUTO_INCREMENT for table `ci_sessions`
 --
 ALTER TABLE `ci_sessions`
-  MODIFY `tbl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `tbl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 
 --
 -- AUTO_INCREMENT for table `emails`
 --
 ALTER TABLE `emails`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `gallery`
@@ -610,7 +744,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -631,6 +765,12 @@ ALTER TABLE `pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `portfolio`
+--
+ALTER TABLE `portfolio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
@@ -640,19 +780,25 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `team`
+--
+ALTER TABLE `team`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

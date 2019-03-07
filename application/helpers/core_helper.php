@@ -19,6 +19,34 @@ if ( ! function_exists('display_json'))
     }
 }
 
+/**
+ * Convert a date to a user-friendly  date
+ *
+ * @param array $array - The original array to convert to JSON
+ * @return string - Friendly formatted JSON string
+ */
+if ( ! function_exists('my_date'))
+{
+   function my_date($date, $format = 'd-M-y') {
+       
+
+
+        if (!empty($date)){
+         
+          return date($format, strtotime($date));;
+
+        }
+
+
+    }
+}
+
+/**
+ * Convert a data to a user-friendly  elapsed time
+ *
+ * @param array $array - The original array to convert to JSON
+ * @return string - Friendly formatted JSON string
+ */
 if ( ! function_exists('time_elapsed_string'))
 {
    function time_elapsed_string($datetime, $full = false) {

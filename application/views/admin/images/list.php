@@ -18,23 +18,13 @@
             <?php // sortable headers ?>
             <tr>
                 <td>
-                    <a href="<?php echo current_url(); ?>?sort=id&dir=<?php echo (($dir == 'asc' ) ? 'desc' : 'asc'); ?>&limit=<?php echo $limit; ?>&offset=<?php echo $offset; ?><?php echo $filter; ?>">Id</a>
-                    <?php if ($sort == 'id') : ?><span class="fa fa-toggle-<?php echo (($dir == 'asc') ? 'up' : 'down'); ?>"></span><?php endif; ?>
+                    
                 </td>
                 <td>
-                    <a href="<?php echo current_url(); ?>?sort=name&dir=<?php echo (($dir == 'asc' ) ? 'desc' : 'asc'); ?>&limit=<?php echo $limit; ?>&offset=<?php echo $offset; ?><?php echo $filter; ?>">name</a>
-                    <?php if ($sort == 'name') : ?><span class="fa fa-toggle-<?php echo (($dir == 'asc') ? 'up' : 'down'); ?>"></span><?php endif; ?>
+                    <a href="<?php echo current_url(); ?>?sort=name&dir=<?php echo (($dir == 'asc' ) ? 'desc' : 'asc'); ?>&limit=<?php echo $limit; ?>&offset=<?php echo $offset; ?><?php echo $filter; ?>">Daterange</a>
+                    <?php if ($sort == 'Daterange') : ?><span class="fa fa-toggle-<?php echo (($dir == 'asc') ? 'up' : 'down'); ?>"></span><?php endif; ?>
                 </td>
-                <td>
-                    <a href="<?php echo current_url(); ?>?sort=slug&dir=<?php echo (($dir == 'asc' ) ? 'desc' : 'asc'); ?>&limit=<?php echo $limit; ?>&offset=<?php echo $offset; ?><?php echo $filter; ?>">Slug</a>
-                    <?php if ($sort == 'slug') : ?><span class="fa fa-toggle-<?php echo (($dir == 'asc') ? 'up' : 'down'); ?>"></span><?php endif; ?>
-                </td>
-              
-           
-                <td>
-                    <a href="<?php echo current_url(); ?>?sort=status&dir=<?php echo (($dir == 'asc' ) ? 'desc' : 'asc'); ?>&limit=<?php echo $limit; ?>&offset=<?php echo $offset; ?><?php echo $filter; ?>">Status</a>
-                    <?php if ($sort == 'status') : ?><span class="fa fa-toggle-<?php echo (($dir == 'asc') ? 'up' : 'down'); ?>"></span><?php endif; ?>
-                </td>
+             
                 <td class="pull-right">
                     Actions
                 </td>
@@ -45,16 +35,17 @@
                 <?php echo form_open("{$this_url}?sort={$sort}&dir={$dir}&limit={$limit}&offset=0{$filter}", array('role'=>'form', 'id'=>"filters")); ?>
                     <th>
                     </th>
-                    <th<?php echo ((isset($filters['name'])) ? ' class="has-success"' : ''); ?>>
-                        <?php echo form_input(array('name'=>'name', 'id'=>'name', 'class'=>'form-control input-sm', 'placeholder'=>('users input name'), 'value'=>set_value('name', ((isset($filters['name'])) ? $filters['name'] : '')))); ?>
+                    <th<?php echo ((isset($filters['daterange'])) ? ' class="has-success"' : ''); ?>>
+                        <!-- <?php echo form_input(array('name'=>'name', 'id'=>'name', 'class'=>'form-control input-sm', 'placeholder'=>('users input name'), 'value'=>set_value('name', ((isset($filters['name'])) ? $filters['name'] : '')))); ?> -->
+
+                       <input id="daterangepicker" name="date" class="form-control block">
                     </th>
-                    <th<?php echo ((isset($filters['slug'])) ? ' class="has-success"' : ''); ?>>
-                        <?php echo form_input(array('name'=>'slug', 'id'=>'slug', 'class'=>'form-control input-sm', 'placeholder'=>('users input slug'), 'value'=>set_value('slug', ((isset($filters['slug'])) ? $filters['slug'] : '')))); ?>
-                    </th>
+                   
                     
                     <th colspan="3">
                         <div class="text-right">
                             <a href="<?php echo $this_url; ?>" class="btn btn-danger btn-sm tooltips" data-toggle="tooltip" name="<?php echo ('admin tooltip filter_reset'); ?>"><span class="fa fa-refresh"></span> Reset Filter</a>
+
                             <button type="submit" name="submit" value="<?php echo ('core button filter'); ?>" class="btn btn-primary btn-sm tooltips" data-toggle="tooltip" name="<?php echo ('admin tooltip filter'); ?>"><span class="fa fa-filter"></span> Filter</button>
                         </div>
                     </th>
@@ -64,46 +55,30 @@
         </thead>
         <tbody>
 
+        </tbody>
+    </table>
+            <div class="row">
             <?php // data rows ?>
             <?php if ($total) : ?>
                 <?php foreach ($page_data as $data) : ?>
-                    <tr>
-                        <td<?php echo (($sort == 'id') ? ' class="sorted"' : ''); ?>>
-                            <?php echo $data['id']; ?>
-                        </td>
-                        <td<?php echo (($sort == 'name') ? ' class="sorted"' : ''); ?>>
-                            <?php echo $data['name']; ?>
-                        </td>
-                        <td<?php echo (($sort == 'slug') ? ' class="sorted"' : ''); ?>>
-                            <?php echo $data['slug']; ?>
-                        </td>
-                     
-                        <td<?php echo (($sort == 'status') ? ' class="sorted"' : ''); ?>>
-                            <?php echo ($data['status']) ?  "Active" : "InActive"; ?>
-                        </td>
-                        <td>
-                            <div class="text-right">
-                                <div class="btn-group">
-                                  
-                                        <a href="#modal-<?php echo $data['id']; ?>" data-toggle="modal" class="btn btn-danger btn-xs" name="<?php echo ('admin button delete'); ?>"><span class="fa fa-trash"></span></a>
+                            <div  class="col-sm-4 col-md-2 ">
+                                <a href="#"  class="" data-toggle="modal" data-target="#myModal<?php echo $data['id']?>">
                                   
 
-                                    <a href="<?php echo $this_url; ?>/edit/<?php echo $data['id']; ?>" class="btn btn-warning btn-xs" name="<?php echo ('admin button edit'); ?>"><span class="fa fa-edit"></span></a>
-                                </div>
+                                
+                                <img src="<?php echo base_url() ?><?php echo $data['path']; ?>"  class="img-fluid rounded " alt="<?php echo $data['name']; ?>">
+
+                                </a>
+                            
                             </div>
-                        </td>
-                    </tr>
+
+                   
                 <?php endforeach; ?>
             <?php else : ?>
-                <tr>
-                    <td colspan="7">
-                        Empty Table
-                    </td>
-                </tr>
+              
             <?php endif; ?>
 
-        </tbody>
-    </table>
+            </div>
 
     <?php // list tools ?>
     <div class="panel-footer">
@@ -127,7 +102,7 @@
             </div>
             <div class="col-md-2 text-right">
                 <?php if ($total) : ?>
-                    <a href="<?php echo $this_url; ?>/export?sort=<?php echo $sort; ?>&dir=<?php echo $dir; ?><?php echo $filter; ?>" class="btn btn-primary btn-sm tooltips" data-toggle="tooltip" name="<?php echo ('admin tooltip csv_export'); ?>"><span class="fa fa-export"></span> <?php echo ('admin button csv_export'); ?></a>
+                    <a href="<?php echo $this_url; ?>/export?sort=<?php echo $sort; ?>&dir=<?php echo $dir; ?><?php echo $filter; ?>" class="btn btn-primary btn-sm tooltips" data-toggle="tooltip" name="<?php echo ('admin tooltip csv_export'); ?>"><span class="fa fa-export"></span> <?php echo ('csv export'); ?></a>
                 <?php endif; ?>
             </div>
         </div>
@@ -156,6 +131,49 @@
                 </div>
             </div>
         </div>
+
+        <!-- The Modal -->
+        <!-- img details Modal -->
+            <div class="modal fade" id="myModal<?php echo $data['id']?>">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title"><?php echo $data['name']; ?></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                                <img src="<?php echo base_url() ?><?php echo $data['path']; ?>"  class="img-fluid " alt="<?php echo $data['name']; ?>">
+
+                                <div class="card">
+                                <div class="card-header">
+                                <h5>Img Url</h5>
+                                </div>
+                                <div class="card-block">
+                                <p><?php echo $data['path']; ?></p>
+                                </div>
+                                </div>
+                   
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                   <p class="pull-left"> Uploaded :  <?php echo my_date($data['created']); ?>  </p>
+                        <a  class="btn btn-danger btn-delete-user" href="<?php echo base_url() ?>admin/images/delete/<?php echo $data['id']; ?>">delete</a>
+
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
     <?php endforeach; ?>
 <?php endif; ?>
 
+<script>    
+<?php $this->load->view('admin/inc/daterangepicker')  ?>
+</script>

@@ -28,6 +28,10 @@ class Images extends Admin_Controller {
             $this->_redirect_url = THIS_URL;
         }
 
+        $this->add_js_theme(array('moment.js','daterangepicker.js'));
+        $this->add_external_css(array('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css'));
+        $this->add_css_theme(array('daterangepicker.css'));
+
 
     }
 
@@ -115,7 +119,7 @@ class Images extends Admin_Controller {
         ));
 
         // setup page header data
-        $this->set_title('Pages');
+        $this->set_title('Images');
         $this->set_page_header('Page List');
 
         $data = $this->includes;
@@ -388,11 +392,11 @@ class Images extends Admin_Controller {
 
                 if ($delete)
                 {
-                    $this->session->set_flashdata('message', 'images '  .$user['title'] . ' Deleted');
+                    $this->session->set_flashdata('message', 'image '  .$user['name'] . ' Deleted');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Can not delete images '  .$user['title'] . ' ');
+                    $this->session->set_flashdata('error', 'Can not delete images '  .$user['name'] . ' ');
 
                 }
             }
@@ -601,7 +605,7 @@ class Images extends Admin_Controller {
 
         if($upload_success){
 
-        $img_data['path'] =$upload_data["file_path"];
+        $img_data['path'] ='uploads/'.$curr_month.'/'.$file_name;
         $img_data['name'] =$file_name;
         $img_data['status']=1;
         $img_data['notes']=$notes;

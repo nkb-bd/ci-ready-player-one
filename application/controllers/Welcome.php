@@ -29,10 +29,24 @@ class Welcome extends Public_Controller {
 
         $slider_data = $this->common_model->get_all('sliders');
         $services_data = $this->common_model->get_all('services');
+        
+        $portfolio_data = $this->common_model->get_all('portfolio');
+        $portfolio_types = $this->get_portfolio_type_group();
+
+
+
+        $team_data = $this->common_model->get_all('team');
+
+
+        $blog_data = $this->common_model->get_all('blogs');
+
+
+
+
 
         // echo "<pre>";
 
-        // print_r($slider_data);exit;
+        // print_r($blog_data);exit;
 
          //a;wasy same for main admin
 
@@ -44,6 +58,10 @@ class Welcome extends Public_Controller {
         $content_data = array(
             'slider_data' => $slider_data['results'],
             'services_data' => $services_data['results'],
+            'portfolio_data' => $portfolio_data['results'],
+            'team_data' => $team_data['results'],
+            'blog_data' => $blog_data['results'],
+            'portfolio_types' => $portfolio_types,
         );
         
 
@@ -122,6 +140,47 @@ class Welcome extends Public_Controller {
            }
       
     }
+    
+    function blogs($slug){
+            
+
+           if (!empty($slug)) {
+
+               $page_data = $this->common_model->get_by_where('slug',$slug,'blogs','');
+               if (empty($page_data)||$page_data[0]['status']==0) {
+
+                    $this->session->set_flashdata('message', 'Blog not available!');
+                    redirect('','refresh');
+
+                }
+
+
+                $page_data =  $page_data[0];
+             
+                $content_data = array(
+                        // 'body' => $page_data['body'],
+                        'title' => $page_data['title'],
+                        'image' => $page_data['image'],
+                        'slug' => $page_data['slug'],
+                        'meta_keywords' => $page_data['meta_keywords'],
+                        'meta_description' => $page_data['meta_description'],
+                        'body' => $page_data['body'],
+                         'dynamic_page_menu' => $this->dynamic_pages,
+                    );
+                
+
+                $data = $this->includes;                    
+                $data['content'] = $this->load->view('blogs/single', $content_data, TRUE);
+
+                $this->load->view($this->template, $data);
+
+           }else{
+
+                redirect('','refresh');
+
+           }
+      
+    }
 
     
     function page_data(){
@@ -149,6 +208,40 @@ class Welcome extends Public_Controller {
            }
       
     }
+
+        /**
+     * Get portfolio type by group
+     *
+     * @param  int $id
+     * @return array|boolean
+     */
+    function get_portfolio_type_group() {
+
+
+
+
+            $this->db->  select('type');
+
+            $this->db->  from('portfolio');
+            $this->db->group_by('type'); 
+            $this->db->  where('deleted', 0);
+            $query = $this->db->  where('status', 1);
+
+            $this->db->  order_by('id', "asc");
+
+            $query = $this->db->  get();
+
+
+
+            if ($query ->  num_rows() >= 1) {
+                return $query ->  result_array();
+            }
+
+
+
+            return false;
+
+        }
 
 
 

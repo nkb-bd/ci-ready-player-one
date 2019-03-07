@@ -38,6 +38,14 @@ class Contact extends Admin_Controller {
         {
             $this->_redirect_url = THIS_URL;
         }
+
+        $this->add_external_css(
+                array(
+                    "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css"
+                   
+                ));
+
+       
     }
 
 

@@ -151,6 +151,26 @@
                                     </li>
                                   
                                  </ul>
+
+                              <li class="pcoded-hasmenu <?php echo (uri_string() == 'admin/blog') ? 'active' : ''; ?>">
+                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                 <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
+                                 <span class="pcoded-mtext">blog</span>
+                                 </a>
+                                 <ul class="pcoded-submenu">
+                                    <li class="<?php echo (uri_string() == 'admin/blog') ? 'active' : ''; ?>">
+                                       <a href="<?=base_url()?>admin/blog" class="waves-effect waves-dark" class="<?php echo (uri_string() == 'admin/blog') ? 'active' : ''; ?>">
+                                       <span class="pcoded-mtext">List</span>
+                                       </a>
+
+                                    </li>
+                                    <li class=" <?php echo (uri_string() == 'admin/blog/add') ? 'active' : ''; ?>">
+                                       <a href="<?=base_url()?>admin/blog/add" class="waves-effect waves-dark">
+                                       <span class="pcoded-mtext">Add</span>
+                                       </a>
+                                    </li>
+                                  
+                                 </ul>
                               </li>
 
                               <li class="pcoded-hasmenu <?php echo (uri_string() == 'admin/services') ? 'active' : ''; ?>">
@@ -173,6 +193,74 @@
                                   
                                  </ul>
                               </li>
+                              <!-- portfolio -->
+                              <li class="pcoded-hasmenu <?php echo (uri_string() == 'admin/portfolio') ? 'active' : ''; ?>">
+                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                 <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
+                                 <span class="pcoded-mtext">Portfolio</span>
+                                 </a>
+                                 <ul class="pcoded-submenu">
+                                    <li class="<?php echo (uri_string() == 'admin/portfolio') ? 'active' : ''; ?>">
+                                       <a href="<?=base_url()?>admin/portfolio" class="waves-effect waves-dark" class="<?php echo (uri_string() == 'admin/portfolio') ? 'active' : ''; ?>">
+                                       <span class="pcoded-mtext">List</span>
+                                       </a>
+
+                                    </li>
+                                    <li class=" <?php echo (uri_string() == 'admin/portfolio/add') ? 'active' : ''; ?>">
+                                       <a href="<?=base_url()?>admin/portfolio/add" class="waves-effect waves-dark">
+                                       <span class="pcoded-mtext">Add</span>
+                                       </a>
+                                    </li>
+                                  
+                                 </ul>
+                              </li>
+
+                             <!-- team -->
+                              <li class="pcoded-hasmenu <?php echo (uri_string() == 'admin/team') ? 'active' : ''; ?>">
+                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                 <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
+                                 <span class="pcoded-mtext">Team</span>
+                                 </a>
+                                 <ul class="pcoded-submenu">
+                                    <li class="<?php echo (uri_string() == 'admin/team') ? 'active' : ''; ?>">
+                                       <a href="<?=base_url()?>admin/team" class="waves-effect waves-dark" class="<?php echo (uri_string() == 'admin/team') ? 'active' : ''; ?>">
+                                       <span class="pcoded-mtext">List</span>
+                                       </a>
+
+                                    </li>
+                                    <li class=" <?php echo (uri_string() == 'admin/team/add') ? 'active' : ''; ?>">
+                                       <a href="<?=base_url()?>admin/team/add" class="waves-effect waves-dark">
+                                       <span class="pcoded-mtext">Add</span>
+                                       </a>
+                                    </li>
+                                  
+                                 </ul>
+                              </li>
+
+                              <div class="pcoded-navigation-label">Blog</div>
+
+                                 <!-- team -->
+                              <li class="pcoded-hasmenu <?php echo (uri_string() == 'admin/blog') ? 'active' : ''; ?>">
+                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                 <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
+                                 <span class="pcoded-mtext">Blog</span>
+                                 </a>
+                                 <ul class="pcoded-submenu">
+                                    <li class="<?php echo (uri_string() == 'admin/blog') ? 'active' : ''; ?>">
+                                       <a href="<?=base_url()?>admin/blog" class="waves-effect waves-dark" class="<?php echo (uri_string() == 'admin/blog') ? 'active' : ''; ?>">
+                                       <span class="pcoded-mtext">List</span>
+                                       </a>
+
+                                    </li>
+                                    <li class=" <?php echo (uri_string() == 'admin/blog/add') ? 'active' : ''; ?>">
+                                       <a href="<?=base_url()?>admin/blog/add" class="waves-effect waves-dark">
+                                       <span class="pcoded-mtext">Add</span>
+                                       </a>
+                                    </li>
+                                  
+                                 </ul>
+                              </li>
+
 
                               <div class="pcoded-navigation-label">Trash</div>
 

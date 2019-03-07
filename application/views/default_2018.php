@@ -158,7 +158,8 @@
       </div>
     </section>
 
-    
+    <?php if ( !empty($portfolio_data) ): ?>
+      
     <section class="ftco-counter" id="section-counter">
       <div class="container">
         <div class="row d-flex">
@@ -168,8 +169,98 @@
             <!-- portfolio -->
 
             <style>
+button svg {
+  display: none;
+}
 
-            </style>
+button.loading-start svg {
+  display: inline-block;
+
+  opacity: 1;
+}
+.single-content-holder{
+  position:   relative;
+
+}
+.single-content :hover .p-desc{
+  opacity: 1;
+
+}.hovereffect {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.hovereffect .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.hovereffect img {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+
+.hovereffect:hover img {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /><feGaussianBlur stdDeviation="3" /></filter></svg>#filter');
+  filter: grayscale(1) blur(3px);
+  -webkit-filter: grayscale(1) blur(3px);
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.hovereffect h2 {
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hovereffect a.info {
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid #fff;
+  margin: 50px 0 0 0;
+  background-color: transparent;
+}
+
+.hovereffect a.info:hover {
+  box-shadow: 0 0 5px #fff;
+}
+
+.hovereffect a.info, .hovereffect h2 {
+  -webkit-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transform: scale(0.7);
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.hovereffect:hover a.info, .hovereffect:hover h2 {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}           </style>
               <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-12 text-center heading-section  ftco-animate">
                   <h2 class="mb-2"><span class="px-4">Our Potfolio</span></h2>
@@ -180,44 +271,39 @@
                 <div class="filters filter-button-group">
                   <ul><h4>
                     <li class="active" data-filter="*">All</li>
-                    <li data-filter=".webdesign">Web Design</li>
-                    <li data-filter=".webdev">Web Development</li>
-                    <li data-filter=".brand">Brand Identity</li>
+
+                    <?php if ($portfolio_types): ?>
+                      
+                      <?php foreach ($portfolio_types as $data): ?>
+  
+                        <li data-filter=" .<?php echo  str_replace(' ', '_', $data['type']) ?>"> <?php echo $data['type'];  ?> </li>
+                        
+                      <?php endforeach ?>
+                    
+                    <?php endif ?>
                   </h4></ul>
                 </div>
 
                 <div class="content grid">
 
 
-                  <div class="single-content brand webdesign grid-item">
-                    <a href="#">
-                    <img class="p2" src="https://static1.squarespace.com/static/56c5196f4c2f85dda57c1d66/59d944df8a02c7abc311e81d/5b71c491b8a045325bf1beba/1534182696851/Screen+Shot+2018-08-13+at+1.48.35+PM.png">
-                    </a>
-                  </div>
+                  <?php if (count($portfolio_data)>0): ?>
 
-                  <div class="single-content brand grid-item">
-                    <img class="p2" src="https://static1.squarespace.com/static/56c5196f4c2f85dda57c1d66/59d944df8a02c7abc311e81d/59da52ba29f187b71a84628e/1507480323521/Portfolio+Template+AMD-06.jpg">
-                  </div>
-                        
-                        <div class="single-content webdesign grid-item">
-                    <img class="p2" src="https://static1.squarespace.com/static/56c5196f4c2f85dda57c1d66/59d944df8a02c7abc311e81d/5b71a4cd0ebbe87857c695de/1534181858373/Portfolio+Template+AMD-11.png">
-                  </div>
-                        
-                        <div class="single-content webdesign grid-item">
-                    <img class="p2" src="https://static1.squarespace.com/static/56c5196f4c2f85dda57c1d66/59d944df8a02c7abc311e81d/59da3b4bf7e0ab21edcb9aa1/1507480179530/Portfolio+Template+AMD-06.png">
-                  </div>
-                        
-                        <div class="single-content webdesign brand grid-item">
-                    <img class="p2"src="https://static1.squarespace.com/static/56c5196f4c2f85dda57c1d66/59d944df8a02c7abc311e81d/59da46128419c28f51bc28b1/1534175868854/Portfolio+Template+AMD-04.png">
-                  </div>
-                        
-                        <div class="single-content webdesign grid-item">
-                    <img class="p2" src="https://static1.squarespace.com/static/56c5196f4c2f85dda57c1d66/59d944df8a02c7abc311e81d/5b71c1e221c67c0feefe2a10/1534182546003/Portfolio+Template+AMD-03.png">
-                  </div>
-                        
-                        <div class="single-content webdesign webdev grid-item">
-                    <img class="p2"src="https://static1.squarespace.com/static/56c5196f4c2f85dda57c1d66/59d944df8a02c7abc311e81d/59d9455546c3c4655adade94/1507480179518/Portfolio+Template+AMD-01.png">
-                  </div>
+                      <?php foreach ($portfolio_data as $data): ?>
+                                <div class="single-content brand   <?php echo  str_replace(' ', '_', $data['type']) ?> grid-item  " style="margin:10px;">
+                                    <div class="hovereffect">
+                                        <img class="img-responsive" src="<?= $data['path']?>" alt="<?= $data['url']?>">
+                                        <div class="overlay">
+                                           <h2><?= $data['name']?></h2>
+                                           <a class="info" href="<?= $data['url']?>" target="_blank">Open</a>
+                                        </div>
+                                    </div>
+                                </div>
+                      <?php endforeach ?>
+                    
+                  <?php endif ?>
+             
+
                         
                     
                     </div>
@@ -226,10 +312,11 @@
       </div>
     </section>
     <!-- portfolio -->
-
+   <?php endif ?>
     
+    <?php if ( !empty($team_data) ): ?>
     <!-- team -->
-
+      
     <section class="ftco-section testimony-section" style="background-image: url(<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/bg_3.jpg);">
       <div class="overlay"></div>
       <div class="container">
@@ -241,83 +328,37 @@
         <div class="row ftco-animate">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Member</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/person_2.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Member</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Member</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/person_4.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Member</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Arthur Browner</p>
-                    <span class="position">Member</span>
-                  </div>
-                </div>
-              </div>
+            
+
+                  <?php foreach ($team_data as $data): ?>
+                               <div class="item">
+                                <div class="testimony-wrap text-center py-4 pb-5">
+                                  <div class="user-img mb-4" style="background-image: url(<?php echo base_url("/{$data['path']}")?>)">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                      <i class="icon-code"></i>
+                                    </span>
+                                  </div>
+                                  <div class="text p-3">
+                                    <p class="name"><?= $data['name']?></p>
+                                    <span class="position"><?= $data['designation']?></span>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><?php echo !empty($data['fb_link']) ? '<a href="'.$data['fb_link'].'" target="_blank" ><span class="icon-facebook"></span></a> ': '' ?> </li>
+                                        <li class="list-inline-item"><?php echo !empty($data['twitter_link']) ? '<a href="'.$data['twitter_link'].'" target="_blank" ><span class="icon-twitter"></span></a> ': '' ?> </li>
+                                       
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                      <?php endforeach ?>
+          
             </div>
           </div>
         </div>
       </div>
     </section>
-    
     <!-- team -->
+    <?php endif ?>
+    
 
     <!-- testimony -->
     <section class="ftco-section ftco-no-pt ftco-no-pb">
@@ -335,16 +376,16 @@
               
               <div class="col-lg-8  offset-2 d-flex ftco-animate " >
                 <div class="text-center">
-                    <img src="<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/image_1.jpg" style="max-width: 180px; display: inline-block;" class="img-responsive rounded" alt="">
+                    <img src="https://www.dmsholidays.com/img/DMS-Holidays-logo.png" style="max-width: 180px; display: inline-block;" class="img-responsive rounded" alt="">
                  
                   <div class="text d-flex  d-block " >
                    
                     <div class=" p-4 text-center">
-                      <p>Mack Winston2</p>
+                      <p>Rick Lim</p>
                         <span class="quote d-flex align-items-center justify-content-center">
                           <i class="icon-quote-left"></i>
                         </span>
-                      <h3 class="heading mt-2"><a href="#">Don’t just take our words for it. Our clients are our biggest supporters</a></h3>
+                      <h3 class="heading mt-2"><a href="#">Awesome service, seller takes the time to fully understand my requirements and manage to deliver what i want, Talented man. Would definitely come back to him for more of his services.</a></h3>
                     
                     </div>
                   </div>
@@ -380,7 +421,7 @@
     
 
     <!-- partners -->
-     <section class="ftco-section bg-light">
+    <!--  <section class="ftco-section bg-light">
 
         <div class="container">
           <div class="col-md-12">
@@ -437,77 +478,53 @@
               </div>
           </div>
         </div>
-     </section>
+     </section> -->
     <!-- partners -->
+      
 
-    <section class="ftco-section">
+    <?php if (  !empty($blog_data)): ?>
+        
+    <section class="ftco-section bg-light">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-12 text-center heading-section  ftco-animate">
+          <div class="col-md-12 text-center heading-section heading-section-light    ftco-animate">
             <h2 class="mb-2"><span class="px-4">Recent Blog</span></h2>
             <span class="subheading">Our Blog</span>
           </div>
         </div>
         <div class="row d-flex">
-          <div class="col-lg-4 d-flex ftco-animate">
+
+          <?php foreach ($blog_data   as $data): ?>
+             <div class="col-lg-4 d-flex ftco-animate">
             <div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/image_1.jpg');">
+              <a href="<?=base_url()?>blog/<?=$data['slug']?>" class="block-20" style="background-image: url('<?php echo base_url("/{$data['image']}")?>');">
               </a>
               <div class="text d-flex float-right d-block">
                 <div class="topper text-center pt-4 px-3">
-                  <span class="day">18</span>
-                  <span class="mos">January</span>
-                  <span class="yr">2019</span>
+                  <span class="day"><?php echo  date("d",strtotime($data['created'])) ?></span>
+                  <span class="mos"><?php echo  date("M",strtotime($data['created'])) ?></span>
+                  <span class="yr"><?php echo  date("Y",strtotime($data['created'])) ?></span>
                 </div>
                 <div class="desc p-4">
-                  <h3 class="heading mt-2"><a href="#">All you want to know about Bible</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                  <h3 class="heading mt-2"><a href="<?=base_url()?>blog/<?=$data['slug']?>"><?php echo   $data['title'] ?></a></h3>
+                  <p><?php echo   $data['excerpt'] ?></p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 d-flex ftco-animate">
-            <div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/image_2.jpg');">
-              </a>
-              <div class="text d-flex float-right d-block">
-                <div class="topper text-center pt-4 px-3">
-                  <span class="day">15</span>
-                  <span class="mos">January</span>
-                  <span class="yr">2019</span>
-                </div>
-                <div class="desc p-4">
-                  <h3 class="heading mt-2"><a href="#">All you want to know about Bible</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 d-flex ftco-animate">
-            <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('<?php echo base_url("/{$this->settings->themes_folder}/{$this->settings->theme}/")?>images/image_3.jpg');">
-              </a>
-              <div class="text d-flex float-right d-block">
-                <div class="topper text-center pt-4 px-3">
-                  <span class="day">14</span>
-                  <span class="mos">January</span>
-                  <span class="yr">2019</span>
-                </div>
-                <div class="desc p-4">
-                  <h3 class="heading mt-2"><a href="#">All you want to know about Bible</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <?php endforeach ?>
+         
         </div>
       </div>
     </section>
+
+    <?php endif ?>  
+
     
-    <section class="ftco-section ftco-gallery bg-light">
+    <section class="ftco-section ftco-gallery ">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-12 text-center heading-section  heading-section-light  ftco-animate">
+          <div class="col-md-12 text-center heading-section  ftco-animate">
             <h2 class="mb-2"><span class="px-4">Contact</span></h2>
             <!-- <span class="subheading">Our Blog</span> -->
           </div>
@@ -515,18 +532,40 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="row no-gutters">
-              <form class="contact-form row">
+              <form class="contact-form row ajax-form" method="POST" action="<?=base_url()?>contact/send">
                   <div class="form-field form-group col col-md-6">
-                     <input id="name" class="input-text form-control" type="text" placeholder="Name" required>
+                     <input id="name" class="input-text form-control" type="text" placeholder="Name" required name="name">
+                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
                   </div>
                   <div class="form-field  form-group col col-md-6">
-                     <input id="email" class="input-text js-input  form-control"  placeholder="Email" type="email" required>
+                     <input id="email" class="input-text js-input  form-control"  placeholder="Email" type="email"  name="email" required>
                   </div>
                   <div class="form-field  form-group col-md-12">
-                     <textarea rows="6" cols="50" class="input-text js-input  form-control"  type="text" required></textarea>
+                     <textarea rows="6" cols="50" class="input-text js-input  form-control"  type="text"  name="message"  required></textarea>
                   </div>
                   <div class="form-field   col-md-12 align-center">
-                    <button class="btn btn-primary px-4 py-3 mr-md-2 col-md-12 "><span class="icon-chat"></span> Send</button>
+                    <button class="btn btn-primary px-4 py-3 mr-md-2 col-md-12  "><span class="icon-chat"></span> Send
+                       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                           width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                        <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+                            s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+                            c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+                        <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+                            C22.32,8.481,24.301,9.057,26.013,10.047z">
+                          <animateTransform attributeType="xml"
+                              attributeName="transform"
+                              type="rotate"
+                              from="0 20 20"
+                              to="360 20 20"
+                              dur="0.5s"
+                              repeatCount="indefinite"/>
+                        </path>
+                      </svg>
+                  </button>
+                  </div>
+                  <div id="success" class="col-md-12 align-center">  
+
                   </div>
                </form>
             </div>
@@ -546,7 +585,6 @@
           <div class="row d-flex justify-content-center">
             <div class="col-md-7 text-center heading-section heading-section-white heading-section-no-line ftco-animate">
               <h2>Newsletter</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
               <div class="row d-flex justify-content-center mt-4 mb-4">
                 <div class="col-md-8">
                   <form action="#" class="subscribe-form">
